@@ -1,7 +1,9 @@
-# Central Banking and Sovereign Debt Risk
+# Fiscal Policy as a stabilization tool: the case for VAT in a Monetary Union
 
 Author: Giuseppe Spina
+
 Advisor: Prof. Tommaso Monacelli
+
 Date: September 2026
 
 # Abstract
