@@ -1,4 +1,4 @@
-# Fiscal Policy as a stabilization tool: the case for VAT in a Monetary Union
+# Fiscal Policy as a Stabilization Tool: An Exploration of a Quasi-Automatic VAT Stabilizer with Endogenous Pass-Through
 
 Author: Giuseppe Spina
 
