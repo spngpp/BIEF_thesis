@@ -114,21 +114,19 @@ coef_mc     = MCbar_init/nubar_init;
 
 model(linear);
 
-    % (1) Habit-adjusted consumption, equation (2.3.25), in deviations
+    % (1) Habit-adjusted consumption, in deviations
     ctilde = (1/(1-vartheta))*y - (vartheta/(1-vartheta))*y(-1);
 
-    % (2) Producer-good SDF, equation (2.3.50), net of log(beta)
+    % (2) Producer-good SDF, net of log(beta)
     mp = z(+1)-z - sigma*(ctilde(+1)-ctilde) - (varpi(+1)-varpi);
 
-    % (3) Real marginal cost, equation (2.3.44), in deviations
+    % (3) Real marginal cost, in deviations
     mc = varpi + sigma*ctilde + phi*y - (1+phi)*a;
 
-    % (4) Customer-value recursion, equation (2.3.51)
+    % (4) Customer-value recursion
     v = vartheta*beta*(v(+1)+mp) - coef_mc*mc;
 
-    % (5) CORRECTED Rotemberg pricing equation.
-    %     Nominal rigidity applies to the producer price P_t(i), therefore
-    %     the Phillips curve is written in producer-price inflation pi.
+    % (5) Rotemberg pricing equation.
     pi = beta*pi(+1)
          - (Cbar/zeta)*(v + (vartheta/(1-vartheta))*(y-y(-1)));
 
@@ -141,7 +139,7 @@ model(linear);
     % (8) Consumer-price inflation identity
     pic = pi + varpi - varpi(-1);
 
-    % (9) Household Euler equation, equation (2.3.27), using c_t = y_t
+    % (9) Household Euler equation, using c_t = y_t
     y = (vartheta/(1+vartheta))*y(-1)
         + (1/(1+vartheta))*y(+1)
         - ((1-vartheta)/(sigma*(1+vartheta)))
@@ -164,7 +162,7 @@ model(linear);
     % (14) Natural customer-value recursion
     vn = vartheta*beta*(vn(+1)+mpn) - coef_mc*mcn;
 
-    % (15) Flexible-price condition, equation (2.3.54), in deviations
+    % (15) Flexible-price condition, in deviations
     vn = yn - ctilden;
 
     % (16) Output gap

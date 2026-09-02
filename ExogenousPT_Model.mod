@@ -87,33 +87,31 @@ rhobar         = (bartau/(1+bartau))*Cbar;
 
 model(linear);
 
-    % (1) Dynamic IS equation, equation (2.2.23)
+    % (1) Dynamic IS equation
     y = y(+1) - (1/(sigma+eta_tau))*(i - pi(+1) + z(+1) - z);
 
-    % (2) Fixed-point natural output, equation (2.2.18), in deviations
+    % (2) Fixed-point natural output, in deviations
     yn = ((1+phi)/(sigma+phi+eta_tau))*a;
 
     % (3) Output gap
     x = y - yn;
 
-    % (4) New Keynesian Phillips Curve, equations (2.2.20)-(2.2.21)
+    % (4) New Keynesian Phillips Curve
     pi = beta*pi(+1) + lambda_calvo*(sigma+phi+eta_tau)*x;
 
-    % (5) Monetary-policy rule, equation (2.1.34), in deviations
+    % (5) Monetary-policy rule, in deviations
     i = phi_pi*pi + phi_x*x;
 
-    % (6) VAT feedback rule, equation (2.2.11), in deviations
+    % (6) VAT feedback rule, in deviations
     varpi = eta_tau*y;
 
     % (7) First-order mapping from the VAT wedge to the VAT rate
     tau = (1+bartau)*varpi;
 
-    % (8) Consumer-price inflation identity, equation (2.2.14)
+    % (8) Consumer-price inflation identity
     pic = pi + varpi - varpi(-1);
 
-    % (9) Linearized debt accumulation around dbar = 0 and PiCbar = 1
-    %     beta*d_t = (1-chi)d_{t-1} - (rho_t^tau-rhobar)
-    % with d rho_t^tau = rhobar*y_t + Cbar/(1+bartau)*varpi_t.
+    % (9) Linearized debt accumulation around steady state values
     beta*d = (1-chi)*d(-1) - rhobar*y - (Cbar/(1+bartau))*varpi;
 
     % (10) Technology process
